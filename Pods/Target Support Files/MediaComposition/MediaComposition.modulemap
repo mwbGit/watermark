@@ -1,0 +1,6 @@
+framework module MediaComposition {
+  umbrella header "MediaComposition-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,36 @@
+PODS:
+  - Alamofire (4.8.2)
+  - CLImagePickerTool (3.1.3)
+  - MediaComposition (1.0.1)
+  - MOBFoundation (3.2.19)
+  - SnapKit (4.2.0)
+  - SwiftyJSON (4.3.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.8.2)
+  - CLImagePickerTool
+  - MediaComposition
+  - MOBFoundation
+  - SnapKit (~> 4.2.0)
+  - SwiftyJSON (~> 4.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - CLImagePickerTool
+    - MediaComposition
+    - MOBFoundation
+    - SnapKit
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  CLImagePickerTool: 2ef59c6524efd493571a0ee2bc42f445b4c5b2cb
+  MediaComposition: cd6ef604dd9b56a605339c48a639fdeab6055708
+  MOBFoundation: 606bc4c10ff4c6ac573c09f5081a39c75316bc7b
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+
+PODFILE CHECKSUM: aa1e8ea7537b793edee458229056b0d77a183b45
+
+COCOAPODS: 1.9.3
