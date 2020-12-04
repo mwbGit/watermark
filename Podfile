@@ -21,4 +21,6 @@ target 'watermark' do
   pod 'SnapKit', '~> 4.2.0'
   pod 'MediaComposition'
   pod 'CLImagePickerTool'
+  pod 'Bugly'
+  pod 'WAVideoBox'
 end

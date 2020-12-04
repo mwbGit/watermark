@@ -23,6 +23,14 @@ let kTabbarSafeBottomMargin : CGFloat       = UIDevice.isIphoneXLater() ? 34.0 :
 // navigationBar and Status Height
 let kNavigationBarAndStatusHeight : CGFloat = UIDevice.isIphoneXLater() ? 88.0 : 64.0
 
+let topHeight : CGFloat = kNavigationBarAndStatusHeight + 10
+let topHeight2 : CGFloat = kNavigationBarAndStatusHeight + 20
+let topHeight3 : CGFloat = kNavigationBarAndStatusHeight + 30
+
+let SCREEN_WIDTH : CGFloat = kScreenWidth
+let SCREEN_HEIGHT : CGFloat = kScreenHeight
+let BOTTOM_HEIGHT : CGFloat = kScreenHeight - kTabbarSafeBottomMargin
+
 
 extension UIDevice {
     // iPhone X设备

@@ -9,4 +9,7 @@
 #ifndef MyShare_Bridging_Header_h
 #define MyShare_Bridging_Header_h
 
+#import <Bugly/Bugly.h>
+#import "WAVideoBox.h"
+
 #endif /* MyShare_Bridging_Header_h */

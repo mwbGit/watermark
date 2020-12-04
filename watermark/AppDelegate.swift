@@ -14,17 +14,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-
-        self.window = UIWindow.init(frame: UIScreen.main.bounds)
-               self.viewController = UIViewController()
-               self.window?.rootViewController = self.viewController
-               self.window?.makeKeyAndVisible()
-               return true
         
+        self.window = UIWindow.init(frame: UIScreen.main.bounds)
+        self.viewController = UIViewController()
+        self.window?.rootViewController = self.viewController
+        self.window?.makeKeyAndVisible()
+        Bugly.start(withAppId: "b1bd0aa6d2")
+        return true
     }
     
     var viewController: UIViewController?
-
+    
     // MARK: UISceneSession Lifecycle
     
     @available(iOS 13.0, *)

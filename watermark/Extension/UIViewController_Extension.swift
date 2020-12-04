@@ -36,5 +36,29 @@ public extension UIViewController {
         return UIDevice.isIPhoneX ? 49+34 : 49
     }
     
+    var isVip: Bool {
+        return UserDefaults.standard.bool(forKey: "vip")
+    }
+    
+    func setVip(val:Bool) {
+        UserDefaults.standard.set(val, forKey: "vip")
+    }
+    
+    var limit: Bool {
+        return UserDefaults.standard.integer(forKey: "times") >= 3
+    }
+    
+    var increase: Bool {
+        UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "times") + 1 , forKey: "times")
+        return true
+    }
+    
+    var showTips: Bool {
+        return UserDefaults.standard.bool(forKey: "vipTips")
+    }
+    
+    func setTips(val:Bool) {
+        UserDefaults.standard.set(val, forKey: "vipTips")
+    }
 }
 

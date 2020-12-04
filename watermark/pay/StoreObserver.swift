@@ -19,6 +19,8 @@ let ITMS_SANDBOX_VERIFY_RECEIPT_URL = "https://sandbox.itunes.apple.com/verifyRe
 
 class StoreObserver: NSObject,SKProductsRequestDelegate, SKPaymentTransactionObserver {
 
+    static var putchaseArray = [SKProduct]() //存放内购产品
+
     //内购单例
     static var  storeObserver : StoreObserver?
     class func shareStoreObserver() ->StoreObserver {
@@ -94,10 +96,17 @@ class StoreObserver: NSObject,SKProductsRequestDelegate, SKPaymentTransactionObs
                 print("price 价格：\(productInfo.price)")
                 print("productIdentifier Product id：\(productInfo.productIdentifier)")
             }
-            
-            let soreProductsArray = soreWithPrice(products: productsArray)
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: ProductsLoadedSucessNotification), object: soreProductsArray)
+            StoreObserver.putchaseArray = productsArray
+//            let soreProductsArray = soreWithPrice(products: productsArray)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: ProductsLoadedSucessNotification), object: productsArray)
         }
+    }
+    public func count () -> Int {
+        return StoreObserver.putchaseArray.count
+    }
+    
+    public func canBuy () -> Bool {
+        return !StoreObserver.putchaseArray.isEmpty
     }
     
     //产品请求失败
@@ -106,12 +115,22 @@ class StoreObserver: NSObject,SKProductsRequestDelegate, SKPaymentTransactionObs
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: ProductPurchaseFailedNotification), object: nil,userInfo: ["code":error.localizedDescription])
     }
     
-     // 购买对应的产品
-    public func buyProduct(product: SKProduct) {
-         let  payment = SKPayment(product: product)
-         SKPaymentQueue.default().add(payment)
-     }
+    // 购买对应的产品
+//    public func buyProduct(product: SKProduct) {
+//        let  payment = SKPayment(product: product)
+//        SKPaymentQueue.default().add(payment)
+//    }
     
+    public func buyProduct(index: Int) {
+        if canBuy() && index < StoreObserver.putchaseArray.count {
+            let  sKProduct = StoreObserver.putchaseArray[index]
+            let  payment = SKPayment(product: sKProduct)
+            SKPaymentQueue.default().add(payment)
+        }
+    }
+    
+    let defaults = UserDefaults.standard
+
     //SKPaymentTransactionObserver   交易代理
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions {
@@ -121,12 +140,14 @@ class StoreObserver: NSObject,SKProductsRequestDelegate, SKPaymentTransactionObs
                 print("-----交易延期—－－－－")
             }else if SKPaymentTransactionState.purchased == transaction.transactionState {
                 print("-----交易完成 --------")
+                defaults.set(true, forKey: "vip")
                 completeTransaction(transaction: transaction)
             }else if SKPaymentTransactionState.failed == transaction.transactionState {
                 print("-----交易失败 --------")
                 failedTransaction(transaction: transaction)
             }else if SKPaymentTransactionState.restored == transaction.transactionState {
                 print("-----已经购买过该商品 --------")
+                defaults.set(true, forKey: "vip")
                 restoreTransaction(transaction: transaction)
             }
         }

@@ -47,6 +47,7 @@ class ImageVideoViewController: UIViewController {
         self.view.addSubview(saveBut)
 
         containerView = UIView(frame: CGRect(x: 5, y: 160, width: SCREEN_WIDTH - 10 , height: SCREEN_HEIGHT - 200))
+        containerView.contentMode = UIView.ContentMode.scaleAspectFit
         self.view.addSubview(containerView)
         
         compose()
@@ -65,7 +66,7 @@ class ImageVideoViewController: UIViewController {
                 imageArr.append(image)
             }, failedClouse: { () in
                 PopViewUtil.share.stopLoading()
-                self.alert(text:"合成失败")
+                UIAlertController.showAlert(message:"合成失败")
             })
             
             // 合成
@@ -82,7 +83,7 @@ class ImageVideoViewController: UIViewController {
                     self.loadPlayer(videoUrl: path)
                 }) { (errMessage) in
                     print("合成失败",errMessage ?? "")
-                    self.alert(text:"合成失败")
+                    UIAlertController.showAlert(message:"合成失败")
                 }
             }
             
@@ -93,7 +94,7 @@ class ImageVideoViewController: UIViewController {
     // 视频保存
     @objc func save() {
         if videoUrl.isEmpty {
-            alert(text: "请先选择照片")
+            UIAlertController.showAlert(message:"请先选择照片")
             return
         }
         self.saveVideoUrl(string : videoUrl)
@@ -106,7 +107,7 @@ class ImageVideoViewController: UIViewController {
             let player = AVPlayer.init(url: URL.init(fileURLWithPath: (videoUrl)))
             self.playerViewController = AVPlayerViewController()
             self.playerViewController!.player = player
-            self.containerView?.addSubview(self.playerViewController!.view)
+        self.containerView?.addSubview(self.playerViewController!.view)
             self.playerViewController?.view.frame = self.containerView!.bounds
             self.addChild(self.playerViewController!)
             self.saveBut.isHidden = false
@@ -125,20 +126,11 @@ class ImageVideoViewController: UIViewController {
     ///将下载的网络视频保存到相册
     @objc func video(videoPath: String, didFinishSavingWithError error: NSError, contextInfo info: AnyObject) {
         if error.code != 0{
-            alert(text:"保存失败")
+            UIAlertController.showAlert(message:"保存失败")
             print(error)
         }else{
-            alert(text:"保存成功")
+            UIAlertController.showAlert(message:"保存成功")
         }
     }
     
-    func alert(text:String){
-        let alert = UIAlertController.init(title: text, message: "", preferredStyle: .alert)
-        
-        let okBtn = UIAlertAction.init(title: "确定", style: .default, handler: nil)
-        
-        alert.addAction(okBtn)
-        self.present(alert, animated: true, completion: {
-        })
-    }
 }

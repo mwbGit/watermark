@@ -9,9 +9,6 @@
 import UIKit
 import WebKit
 
-let SCREEN_WIDTH : CGFloat = UIScreen.main.bounds.size.width
-let SCREEN_HEIGHT : CGFloat = UIScreen.main.bounds.size.height
-
 class PrivacyViewController: UIViewController {
     var webView: WKWebView!
     

@@ -36,33 +36,35 @@ class ImageCutViewController: UIViewController {
     
     func setupViews() {
         //4宫格
-        avaterImageView11 = UIImageView.init(frame: .init(x: (kScreenWidth)/2 - 151, y: (kScreenHeight)/2 - 151, width: 150, height: 150))
-        avaterImageView12 = UIImageView.init(frame: .init(x: (kScreenWidth)/2, y: (kScreenHeight)/2 - 151, width: 150, height: 150))
-        avaterImageView13 = UIImageView.init(frame: .init(x: (kScreenWidth)/2 - 151, y: (kScreenHeight)/2, width: 150, height: 150))
-        avaterImageView14 = UIImageView.init(frame: .init(x: (kScreenWidth)/2, y: (kScreenHeight)/2, width: 150, height: 150))
+        var w = (kScreenWidth - 20) / 2
+        avaterImageView11 = UIImageView.init(frame: .init(x: 10, y: topHeight2 + 100, width: w, height: w))
+        avaterImageView12 = UIImageView.init(frame: .init(x: w + 11, y: topHeight2 + 100, width: w, height: w))
+        avaterImageView13 = UIImageView.init(frame: .init(x: 10, y: topHeight2 + 101 + w, width: w, height: w))
+        avaterImageView14 = UIImageView.init(frame: .init(x: w + 11, y: topHeight2 + 101 + w, width: w, height: w))
         
+        w = (kScreenWidth - 20) / 3
         // 1-3
-        avaterImageView1 = UIImageView.init(frame: .init(x: (kScreenWidth - 100)/2 - 101, y: (kScreenHeight)/2 - 101, width: 100, height: 100))
+        avaterImageView1 = UIImageView.init(frame: .init(x: 10, y: topHeight2 + 100, width: w, height: w))
         avaterImageView1.image = UIImage.init(named: "default-image")
-        avaterImageView2 = UIImageView.init(frame: .init(x: (kScreenWidth - 100)/2, y: (kScreenHeight)/2 - 101, width: 100, height: 100))
+        avaterImageView2 = UIImageView.init(frame: .init(x: w + 11, y: topHeight2 + 100, width: w, height: w))
         avaterImageView2.image = UIImage.init(named: "default-image")
-        avaterImageView3 = UIImageView.init(frame: .init(x: (kScreenWidth - 100)/2 + 101, y: (kScreenHeight)/2 - 101, width: 100, height: 100))
+        avaterImageView3 = UIImageView.init(frame: .init(x: w + w + 12, y: topHeight2 + 100, width: w, height: w))
         avaterImageView3.image = UIImage.init(named: "default-image")
         
         // 4-6
-        avaterImageView4 = UIImageView.init(frame: .init(x: (kScreenWidth - 100)/2 - 101, y: (kScreenHeight)/2, width: 100, height: 100))
+        avaterImageView4 = UIImageView.init(frame: .init(x: 10, y: topHeight2 + 101 + w, width: w, height: w))
         avaterImageView4.image = UIImage.init(named: "default-image")
-        avaterImageView5 = UIImageView.init(frame: .init(x: (kScreenWidth - 100)/2, y: (kScreenHeight)/2, width: 100, height: 100))
+        avaterImageView5 = UIImageView.init(frame: .init(x: w + 11, y: topHeight2 + 101 + w, width: w, height: w))
         avaterImageView5.image = UIImage.init(named: "default-image")
-        avaterImageView6 = UIImageView.init(frame: .init(x: (kScreenWidth - 100)/2 + 101, y: (kScreenHeight)/2, width: 100, height: 100))
+        avaterImageView6 = UIImageView.init(frame: .init(x: w + w + 12, y:topHeight2 + 101 + w, width: w, height: w))
         avaterImageView6.image = UIImage.init(named: "default-image")
         
         // 6-9
-        avaterImageView7 = UIImageView.init(frame: .init(x: (kScreenWidth - 100)/2 - 101, y: (kScreenHeight)/2 + 101, width: 100, height: 100))
+        avaterImageView7 = UIImageView.init(frame: .init(x: 10, y: topHeight2 + 102 + w + w, width: w, height: w))
         avaterImageView7.image = UIImage.init(named: "default-image")
-        avaterImageView8 = UIImageView.init(frame: .init(x: (kScreenWidth - 100)/2, y: (kScreenHeight)/2 + 101, width: 100, height: 100))
+        avaterImageView8 = UIImageView.init(frame: .init(x: w + 11, y: topHeight2 + 102 + w + w, width: w, height: w))
         avaterImageView8.image = UIImage.init(named: "default-image")
-        avaterImageView9 = UIImageView.init(frame: .init(x: (kScreenWidth - 100)/2 + 101, y: (kScreenHeight)/2 + 101, width: 100, height: 100))
+        avaterImageView9 = UIImageView.init(frame: .init(x: w + w + 12, y:topHeight2 + 102 + w + w, width: w, height: w))
         avaterImageView9.image = UIImage.init(named: "default-image")
         
         //        avaterImageView1 = UIImageView.init(frame: .init(x: (kScreenWidth - 160)/2, y: 240, width: 100, height: 100))
@@ -84,17 +86,24 @@ class ImageCutViewController: UIViewController {
         view.addSubview(avaterImageView13)
         view.addSubview(avaterImageView14)
         
-        let button = UIButton.init(frame: .init(x: (kScreenWidth - 160)/2 + 80, y: avaterImageView1.frame.origin.y + avaterImageView1.frame.size.height - 250, width: 160, height: 40))
+        let button = UIButton.init(frame: .init(x: kScreenWidth - 140 , y: topHeight3 , width: 100, height: 40))
         button.setTitle("九宫格", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemBlue
         button.addTarget(self, action: #selector(uploadAvaterImg9(_:)), for: .touchUpInside)
+        button.layer.cornerRadius = 5.0
+        button.layer.masksToBounds = true
         view.addSubview(button)
         
-        let button4 = UIButton.init(frame: .init(x: (kScreenWidth - 160)/2 - 80, y:avaterImageView1.frame.origin.y + avaterImageView1.frame.size.height - 250, width: 160, height: 40))
+        let button4 = UIButton.init(frame: .init(x: 40, y: topHeight3, width: 100, height: 40))
         button4.setTitle("四宫格", for: .normal)
-        button4.setTitleColor(.blue, for: .normal)
+        button4.setTitleColor(.white, for: .normal)
+        button4.backgroundColor = .systemBlue
         button4.addTarget(self, action: #selector(uploadAvaterImg4(_:)), for: .touchUpInside)
+        button4.layer.cornerRadius = 5.0
+        button4.layer.masksToBounds = true
         view.addSubview(button4)
+        
     }
     
     @objc func uploadAvaterImg9(_ sender: UIButton) {
@@ -132,7 +141,7 @@ class ImageCutViewController: UIViewController {
             UIImageWriteToSavedPhotosAlbum(avaterImageView8.image!, nil, nil, nil)
             UIImageWriteToSavedPhotosAlbum(avaterImageView9.image!, nil, nil, nil)
         }
-        alert(text:"保存完成")
+        UIAlertController.showAlert(message:"保存成功")
     }
 }
 
@@ -199,10 +208,13 @@ extension ImageCutViewController : RImageCropperDelegate {
         }
         cropperViewController.navigationController?.popViewController(animated: false)
         
-        let button = UIButton.init(frame: .init(x: (kScreenWidth - 160)/2, y: kScreenHeight - 150, width: 160, height: 40))
+        let button = UIButton.init(frame: .init(x: (kScreenWidth)/2 - 50 , y: topHeight + kScreenWidth + 150, width: 100, height: 40))
         button.setTitle("保存图片", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
         button.addTarget(self, action: #selector(saveAvaterImg(_:)), for: .touchUpInside)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 5.0
+        button.layer.masksToBounds = true
         view.addSubview(button)
         
     }
@@ -211,14 +223,5 @@ extension ImageCutViewController : RImageCropperDelegate {
         cropperViewController.navigationController?.popViewController(animated: false)
         
     }
-    
-    func alert(text:String){
-        let alert = UIAlertController.init(title: text, message: "", preferredStyle: .alert)
-        
-        let okBtn = UIAlertAction.init(title: "确定", style: .default, handler: nil)
-        
-        alert.addAction(okBtn)
-        self.present(alert, animated: true, completion: {
-        })
-    }
+
 }

@@ -11,17 +11,12 @@
 		48AC03B951BD68A633C5F962 /* Pods_watermark.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACD0E928FB19AD5FC77E86A /* Pods_watermark.framework */; };
 		72678673A5D78C8CFD8D3FA7 /* Pods_watermarkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A9B375EEF2CF86717FF870 /* Pods_watermarkTests.framework */; };
 		842D8C872567C74C0088F4B2 /* StoreObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D8C862567C74C0088F4B2 /* StoreObserver.swift */; };
-		842D8C892567C79E0088F4B2 /* CopyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D8C882567C79E0088F4B2 /* CopyViewController.swift */; };
-		842D8C8B2568C1A90088F4B2 /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D8C8A2568C1A90088F4B2 /* GuideViewController.swift */; };
+		8437FED32578876F00CCEAF6 /* VideoWaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437FED22578876F00CCEAF6 /* VideoWaterViewController.swift */; };
 		844124E72535A55500C4B79F /* QrCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844124E62535A55500C4B79F /* QrCodeViewController.swift */; };
 		8464F564251465150058A2AD /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464F563251465150058A2AD /* MenuTableViewController.swift */; };
 		847A85052518C6690052461F /* LGStoreProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A85042518C6690052461F /* LGStoreProduct.swift */; };
 		847A851025199BAB0052461F /* UIDevice_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A850E25199BAB0052461F /* UIDevice_Extension.swift */; };
 		847A851125199BAB0052461F /* UIViewController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A850F25199BAB0052461F /* UIViewController_Extension.swift */; };
-		847A851725199BB80052461F /* XYZShareInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A851325199BB80052461F /* XYZShareInfo.swift */; };
-		847A851825199BB80052461F /* XYZShareItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A851425199BB80052461F /* XYZShareItemCell.swift */; };
-		847A851925199BB80052461F /* XYZShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A851525199BB80052461F /* XYZShareViewController.swift */; };
-		847A851A25199BB80052461F /* XYZShareEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A851625199BB80052461F /* XYZShareEnum.swift */; };
 		847A8523251A00040052461F /* privacy.html in Resources */ = {isa = PBXBuildFile; fileRef = 847A8522251A00040052461F /* privacy.html */; };
 		847A8525251A036B0052461F /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A8524251A036B0052461F /* PrivacyViewController.swift */; };
 		847A8527251A08C70052461F /* agreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 847A8526251A08C70052461F /* agreement.html */; };
@@ -32,6 +27,10 @@
 		84B241D9253DD10C0088D113 /* RDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241D7253DD10B0088D113 /* RDevice.swift */; };
 		84B241DF253DD2EE0088D113 /* ImageCutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241DE253DD2EE0088D113 /* ImageCutViewController.swift */; };
 		84B241E1253E7E2A0088D113 /* ImageVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B241E0253E7E2A0088D113 /* ImageVideoViewController.swift */; };
+		84C61B14256CB7EA00340C4B /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C61B13256CB7EA00340C4B /* UIAlertController.swift */; };
+		84C61B1A256F75CA00340C4B /* ImageWaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C61B19256F75CA00340C4B /* ImageWaterViewController.swift */; };
+		84C61B1C256F75FB00340C4B /* DropBoxTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C61B1B256F75FB00340C4B /* DropBoxTextField.swift */; };
+		84C61B1E2570C73800340C4B /* VipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C61B1D2570C73800340C4B /* VipViewController.swift */; };
 		84CA9C1825130440006C2C34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CA9C1725130440006C2C34 /* AppDelegate.swift */; };
 		84CA9C1A25130440006C2C34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CA9C1925130440006C2C34 /* SceneDelegate.swift */; };
 		84CA9C1F25130440006C2C34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CA9C1D25130440006C2C34 /* Main.storyboard */; };
@@ -65,18 +64,13 @@
 		66E9B12D8FFBBB23A47E1044 /* Pods_watermark_watermarkUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watermark_watermarkUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ACD0E928FB19AD5FC77E86A /* Pods_watermark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watermark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		842D8C862567C74C0088F4B2 /* StoreObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreObserver.swift; sourceTree = "<group>"; };
-		842D8C882567C79E0088F4B2 /* CopyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyViewController.swift; sourceTree = "<group>"; };
-		842D8C8A2568C1A90088F4B2 /* GuideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
+		8437FED22578876F00CCEAF6 /* VideoWaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWaterViewController.swift; sourceTree = "<group>"; };
 		844124E62535A55500C4B79F /* QrCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeViewController.swift; sourceTree = "<group>"; };
 		8464F563251465150058A2AD /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		847A85042518C6690052461F /* LGStoreProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGStoreProduct.swift; sourceTree = "<group>"; };
 		847A85082518C7F40052461F /* MyShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyShare-Bridging-Header.h"; sourceTree = "<group>"; };
 		847A850E25199BAB0052461F /* UIDevice_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIDevice_Extension.swift; sourceTree = "<group>"; };
 		847A850F25199BAB0052461F /* UIViewController_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController_Extension.swift; sourceTree = "<group>"; };
-		847A851325199BB80052461F /* XYZShareInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYZShareInfo.swift; sourceTree = "<group>"; };
-		847A851425199BB80052461F /* XYZShareItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYZShareItemCell.swift; sourceTree = "<group>"; };
-		847A851525199BB80052461F /* XYZShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYZShareViewController.swift; sourceTree = "<group>"; };
-		847A851625199BB80052461F /* XYZShareEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYZShareEnum.swift; sourceTree = "<group>"; };
 		847A851D2519CFA80052461F /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		847A8522251A00040052461F /* privacy.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = privacy.html; sourceTree = "<group>"; };
 		847A8524251A036B0052461F /* PrivacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
@@ -88,7 +82,11 @@
 		84B241D7253DD10B0088D113 /* RDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RDevice.swift; sourceTree = "<group>"; };
 		84B241DE253DD2EE0088D113 /* ImageCutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCutViewController.swift; sourceTree = "<group>"; };
 		84B241E0253E7E2A0088D113 /* ImageVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageVideoViewController.swift; sourceTree = "<group>"; };
-		84CA9C1425130440006C2C34 /* watermark.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watermark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84C61B13256CB7EA00340C4B /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		84C61B19256F75CA00340C4B /* ImageWaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageWaterViewController.swift; sourceTree = "<group>"; };
+		84C61B1B256F75FB00340C4B /* DropBoxTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropBoxTextField.swift; sourceTree = "<group>"; };
+		84C61B1D2570C73800340C4B /* VipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VipViewController.swift; sourceTree = "<group>"; };
+		84CA9C1425130440006C2C34 /* 水印助手.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "水印助手.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84CA9C1725130440006C2C34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84CA9C1925130440006C2C34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84CA9C1E25130440006C2C34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -165,19 +163,9 @@
 				847A850F25199BAB0052461F /* UIViewController_Extension.swift */,
 				847A850E25199BAB0052461F /* UIDevice_Extension.swift */,
 				84B241CD2539AF8C0088D113 /* String_Extension.swift */,
+				84C61B13256CB7EA00340C4B /* UIAlertController.swift */,
 			);
 			path = Extension;
-			sourceTree = "<group>";
-		};
-		847A851225199BB80052461F /* Share */ = {
-			isa = PBXGroup;
-			children = (
-				847A851325199BB80052461F /* XYZShareInfo.swift */,
-				847A851425199BB80052461F /* XYZShareItemCell.swift */,
-				847A851525199BB80052461F /* XYZShareViewController.swift */,
-				847A851625199BB80052461F /* XYZShareEnum.swift */,
-			);
-			path = Share;
 			sourceTree = "<group>";
 		};
 		847A85212519FFE10052461F /* Files */ = {
@@ -194,6 +182,7 @@
 			children = (
 				84B241D6253DD10B0088D113 /* RImageCropperViewController.swift */,
 				84B241D7253DD10B0088D113 /* RDevice.swift */,
+				84C61B1B256F75FB00340C4B /* DropBoxTextField.swift */,
 			);
 			path = ImageCropper;
 			sourceTree = "<group>";
@@ -215,7 +204,7 @@
 		84CA9C1525130440006C2C34 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84CA9C1425130440006C2C34 /* watermark.app */,
+				84CA9C1425130440006C2C34 /* 水印助手.app */,
 				84CA9C2A25130441006C2C34 /* watermarkTests.xctest */,
 				84CA9C3525130441006C2C34 /* watermarkUITests.xctest */,
 			);
@@ -228,7 +217,6 @@
 				842D8C852567C71D0088F4B2 /* pay */,
 				84B241D5253DD10B0088D113 /* ImageCropper */,
 				847A85212519FFE10052461F /* Files */,
-				847A851225199BB80052461F /* Share */,
 				847A850B251989580052461F /* Extension */,
 				84CA9C1725130440006C2C34 /* AppDelegate.swift */,
 				84CA9C1925130440006C2C34 /* SceneDelegate.swift */,
@@ -245,8 +233,9 @@
 				84B241D3253D8B0E0088D113 /* WaterViewController.swift */,
 				84B241DE253DD2EE0088D113 /* ImageCutViewController.swift */,
 				84B241E0253E7E2A0088D113 /* ImageVideoViewController.swift */,
-				842D8C882567C79E0088F4B2 /* CopyViewController.swift */,
-				842D8C8A2568C1A90088F4B2 /* GuideViewController.swift */,
+				84C61B19256F75CA00340C4B /* ImageWaterViewController.swift */,
+				84C61B1D2570C73800340C4B /* VipViewController.swift */,
+				8437FED22578876F00CCEAF6 /* VideoWaterViewController.swift */,
 			);
 			path = watermark;
 			sourceTree = "<group>";
@@ -300,7 +289,7 @@
 			);
 			name = watermark;
 			productName = watermark;
-			productReference = 84CA9C1425130440006C2C34 /* watermark.app */;
+			productReference = 84CA9C1425130440006C2C34 /* 水印助手.app */;
 			productType = "com.apple.product-type.application";
 		};
 		84CA9C2925130441006C2C34 /* watermarkTests */ = {
@@ -557,29 +546,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				847A851825199BB80052461F /* XYZShareItemCell.swift in Sources */,
+				8437FED32578876F00CCEAF6 /* VideoWaterViewController.swift in Sources */,
 				84B241DF253DD2EE0088D113 /* ImageCutViewController.swift in Sources */,
 				847A851125199BAB0052461F /* UIViewController_Extension.swift in Sources */,
-				842D8C892567C79E0088F4B2 /* CopyViewController.swift in Sources */,
 				84B241D4253D8B0E0088D113 /* WaterViewController.swift in Sources */,
-				842D8C8B2568C1A90088F4B2 /* GuideViewController.swift in Sources */,
 				844124E72535A55500C4B79F /* QrCodeViewController.swift in Sources */,
+				84C61B1E2570C73800340C4B /* VipViewController.swift in Sources */,
+				84C61B1C256F75FB00340C4B /* DropBoxTextField.swift in Sources */,
 				842D8C872567C74C0088F4B2 /* StoreObserver.swift in Sources */,
 				847A85052518C6690052461F /* LGStoreProduct.swift in Sources */,
 				84B241D8253DD10C0088D113 /* RImageCropperViewController.swift in Sources */,
 				847A851025199BAB0052461F /* UIDevice_Extension.swift in Sources */,
-				847A851A25199BB80052461F /* XYZShareEnum.swift in Sources */,
 				84B241E1253E7E2A0088D113 /* ImageVideoViewController.swift in Sources */,
+				84C61B14256CB7EA00340C4B /* UIAlertController.swift in Sources */,
 				84CA9C1825130440006C2C34 /* AppDelegate.swift in Sources */,
 				8464F564251465150058A2AD /* MenuTableViewController.swift in Sources */,
 				84B241CE2539AF8C0088D113 /* String_Extension.swift in Sources */,
 				847A8525251A036B0052461F /* PrivacyViewController.swift in Sources */,
-				847A851725199BB80052461F /* XYZShareInfo.swift in Sources */,
 				84B241D9253DD10C0088D113 /* RDevice.swift in Sources */,
 				84CA9C4825131047006C2C34 /* HttpHelp.swift in Sources */,
-				847A851925199BB80052461F /* XYZShareViewController.swift in Sources */,
 				847A8529251A259A0052461F /* AgreementViewController.swift in Sources */,
 				84CA9C1A25130440006C2C34 /* SceneDelegate.swift in Sources */,
+				84C61B1A256F75CA00340C4B /* ImageWaterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,6 +742,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 88QL6WNJZ4;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = watermark/Info.plist;
@@ -762,9 +751,9 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.0.32;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mwb.watermark;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "水印助手";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyShare-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -778,6 +767,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 88QL6WNJZ4;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = watermark/Info.plist;
@@ -786,9 +776,9 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.0.32;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mwb.watermark;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "水印助手";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyShare-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
