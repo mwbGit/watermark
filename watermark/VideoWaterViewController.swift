@@ -116,7 +116,7 @@ class VideoWaterViewController: UIViewController ,  UIImagePickerControllerDeleg
                 print("+++++++++++++++++")
 //            }
         }
-    
+
     }
     
     var containerView: UIView!

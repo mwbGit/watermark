@@ -10,6 +10,7 @@ import UIKit
 import StoreKit
 import WebKit
 import Alamofire
+import SwiftyJSON
 
 class VipViewController: UIViewController {
     
@@ -17,13 +18,16 @@ class VipViewController: UIViewController {
     var imageView: UIImageView!
     let defaults = UserDefaults.standard
     var productPricesArray = [String]() //存放内购产品
-
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "超级会员"
         self.observer = StoreObserver.shareStoreObserver()
         self.productPricesArray = ["30", "90"]
+        self.observer?.create()
 
+        let http:HttpHelp = HttpHelp()
+        http.synchronousGet()
+        
         //内购之后的状态--产品交易完成
         NotificationCenter.default.addObserver(self, selector: #selector(productPurchased(nofi:)), name: NSNotification.Name(rawValue: "ProductPurchased"), object: nil)
         //内购之后的状态--产品交易失败
@@ -38,8 +42,9 @@ class VipViewController: UIViewController {
         showShop(hh: imageView.frame.maxY)
         
         let newL = UILabel()
-        newL.text = "免费试用三天，试用期间可随时取消订阅"
-        newL.font = UIFont.systemFont(ofSize: 15)
+        newL.text = showTips
+        print(newL.text)
+        newL.font = UIFont.systemFont(ofSize: 14)
         newL.textColor = UIColor.red
         newL.frame = CGRect(x: 15, y: imageView.frame.maxY + 85, width: SCREEN_WIDTH - 30 , height: 30)
         //        remark.textColor = UIColor.gray
@@ -56,7 +61,7 @@ class VipViewController: UIViewController {
         goBut.addTarget(self, action: #selector(rechargeBtn(sender:)), for: .touchUpInside)
         self.view.addSubview(goBut)
         
-        let rk = "连续订阅说明：\n.订阅周期：订阅周期是一个月/一年；\n.订阅付款：用户确认购买并付款后计入iTunes账户；\n.取消订阅：如需取消订阅，请在当前订阅到期24小时以前，手动在iTunes/App Id 设置管理中关闭自动续订功能;\n.续订：苹果iTunes账户会在到期前24小时内扣款，除非在当前订阅之前24小时外关闭订阅;"
+        let rk = "连续订阅说明：\n.订阅周期：订阅周期是一个月/一年；\n.订阅付款：用户确认购买并付款后计入iTunes账户；\n.取消订阅：如需取消订阅，请在当前订阅到期24小时以前，手动在iTunes/App Id 设置管理中关闭自动续订功能;\n.续订：苹果iTunes账户会在到期前24小时内扣款，除非在当前订阅之前24小时外关闭订阅;\n.在线咨询：qq[452426885]"
         let vip = UILabel()
         vip.font = UIFont.systemFont(ofSize: 13)
         vip.frame = CGRect(x: 15, y: goBut.frame.maxY + 20, width: SCREEN_WIDTH - 30 , height: 150)
@@ -89,13 +94,10 @@ class VipViewController: UIViewController {
 
 //        UserDefaults.standard.set(false, forKey: "vip")
         if isVip || !(observer?.canBuy())! {
-            goBut.setTitle("超级会员", for: .normal)
-            newL.isHidden = true
+            goBut.setTitle("您已是超级会员", for: .normal)
             return
         }
-        if !showTips {
-            newL.isHidden = true
-        }
+        
     }
     
     var productButArray = [UIButton(), UIButton()]
@@ -156,6 +158,7 @@ class VipViewController: UIViewController {
     deinit {
         NotificationCenter.default.removeObserver(self)
         self.observer?.destroy()
+        print("销毁了")
     }
     
     
@@ -188,6 +191,7 @@ class VipViewController: UIViewController {
         print("购买成功")
         setVip(val: true)
         report()
+        UIAlertController.showTitleAlert(title:"成功", message: "1分钟内生效",in: self)
     }
     
     //实现通知监听方法---- 重新购买
@@ -195,34 +199,54 @@ class VipViewController: UIViewController {
         print("重新购买。。。。")
         setVip(val: true)
         report()
+        UIAlertController.showTitleAlert(title:"成功", message: "1分钟内生效",in: self)
     }
     
     //实现通知监听方法---- 失败
     @objc func productPurchaseFailed(nofi : Notification) {
         let code = nofi.userInfo!["code"] as! String
         print("购买失败。。。。")
-        let alertController = UIAlertController(title: "温馨提示",message: "订阅失败，请稍后再试！",preferredStyle: .alert)
-        let sureAction = UIAlertAction(title: "确定", style: .default, handler: {
-            action in
-        })
-        alertController.addAction(sureAction)
-        self.present(alertController, animated: true, completion: nil)
-        
+        report()
+        UIAlertController.showTitleAlert(title:"订阅失败", message: code,in: self)
     }
     
     func report() {
         do {
+            let receiptURL = Bundle.main.appStoreReceiptURL
+            //购买凭据
+            let receiptData = NSData(contentsOf: receiptURL!)
+            let encodeStr = receiptData?.base64EncodedString(options: NSData.Base64EncodingOptions.endLineWithLineFeed)
+                        
             // 解析
             let infoDictionary = Bundle.main.infoDictionary
             let majorVersion: String? = infoDictionary! ["CFBundleShortVersionString"] as? String
 
             let identifierNumber:String  = (UIDevice.current.identifierForVendor?.uuidString)!
             let sign = identifierNumber + "watermarksafe"
-            Alamofire.request("http://api.mengweibo.com/api/video/report?version=" + majorVersion!, method: HTTPMethod.get,
-                              parameters: ["deviceId" : identifierNumber,"version1": majorVersion,
-                                           "sign":sign.md5, "source":"watermark"]).responseJSON {
+            let encodeStr1: String = encodeStr ?? ""
+            Alamofire.request("http://api.mengweibo.com/api/video/report?version=" + majorVersion!, method: HTTPMethod.post,
+                              parameters: ["deviceId" : identifierNumber,
+                                           "sign":sign.md5, "source":"watermark", "receiptData":encodeStr1]).responseJSON {
                                             (response) in
+                                            
+                                            switch response.result.isSuccess {
+                                            case true:
+                                                if let value = response.result.value {
+                                                    let json = JSON(value)
+                                                    if let vipUser = json["data"]["vipUser"].bool {
+                                                        self.setVip(val: vipUser)
+                                                        print("return vipUser：",vipUser)
+                                                    } else {
+                                                        print("return err：",json["msg"])
+                                                    }
+                                                }
+                                                break
+                                            case false:
+                                                print(response.result.error)
+                                                break
+                                            }
             }
+            
         } catch {
             print("report err")
         }

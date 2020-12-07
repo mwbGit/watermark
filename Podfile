@@ -22,5 +22,5 @@ target 'watermark' do
   pod 'MediaComposition'
   pod 'CLImagePickerTool'
   pod 'Bugly'
-  pod 'WAVideoBox'
+  pod 'WAVideoBox' 
 end

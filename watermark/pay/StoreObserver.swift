@@ -20,6 +20,7 @@ let ITMS_SANDBOX_VERIFY_RECEIPT_URL = "https://sandbox.itunes.apple.com/verifyRe
 class StoreObserver: NSObject,SKProductsRequestDelegate, SKPaymentTransactionObserver {
 
     static var putchaseArray = [SKProduct]() //存放内购产品
+    var status = 0
 
     //内购单例
     static var  storeObserver : StoreObserver?
@@ -122,9 +123,13 @@ class StoreObserver: NSObject,SKProductsRequestDelegate, SKPaymentTransactionObs
 //    }
     
     public func buyProduct(index: Int) {
+        if status > 0 {
+            return
+        }
         if canBuy() && index < StoreObserver.putchaseArray.count {
             let  sKProduct = StoreObserver.putchaseArray[index]
             let  payment = SKPayment(product: sKProduct)
+            status = 1
             SKPaymentQueue.default().add(payment)
         }
     }
@@ -136,12 +141,13 @@ class StoreObserver: NSObject,SKProductsRequestDelegate, SKPaymentTransactionObs
         for transaction in transactions {
             if SKPaymentTransactionState.purchasing == transaction.transactionState {
                 print("-----商品添加进列表 --------")
-            }else if SKPaymentTransactionState.deferred == transaction.transactionState {
-                print("-----交易延期—－－－－")
-            }else if SKPaymentTransactionState.purchased == transaction.transactionState {
+                continue
+            } else if SKPaymentTransactionState.purchased == transaction.transactionState {
                 print("-----交易完成 --------")
                 defaults.set(true, forKey: "vip")
-                completeTransaction(transaction: transaction)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: ProductPurchasedNotification), object: nil)
+                finishTransaction(transaction: transaction)
+//                completeTransaction(transaction: transaction)
             }else if SKPaymentTransactionState.failed == transaction.transactionState {
                 print("-----交易失败 --------")
                 failedTransaction(transaction: transaction)
@@ -149,7 +155,10 @@ class StoreObserver: NSObject,SKProductsRequestDelegate, SKPaymentTransactionObs
                 print("-----已经购买过该商品 --------")
                 defaults.set(true, forKey: "vip")
                 restoreTransaction(transaction: transaction)
+            } else {
+                finishTransaction(transaction: transaction)
             }
+            status = 0
         }
     }
     

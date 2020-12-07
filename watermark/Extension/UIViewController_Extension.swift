@@ -53,11 +53,11 @@ public extension UIViewController {
         return true
     }
     
-    var showTips: Bool {
-        return UserDefaults.standard.bool(forKey: "vipTips")
+    var showTips:String {
+        return UserDefaults.standard.string(forKey: "vipTips") ?? ""
     }
     
-    func setTips(val:Bool) {
+    func setTips(val:String) {
         UserDefaults.standard.set(val, forKey: "vipTips")
     }
 }

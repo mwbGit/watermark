@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = self.viewController
         self.window?.makeKeyAndVisible()
         Bugly.start(withAppId: "b1bd0aa6d2")
+//        Thread.sleep(forTimeInterval: 30)
         return true
     }
     
@@ -40,7 +41,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-    
-    
 }
 

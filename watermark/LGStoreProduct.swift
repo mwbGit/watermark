@@ -14,6 +14,21 @@ class LGStoreProduct: NSObject {
     public override init() { super.init()}
     private var parentVc:UIViewController?
     
+    func goAppStore() {
+        let str = "itms-apps://itunes.apple.com/app/1537228751"
+        guard let url = URL(string: str) else { return }
+        let can = UIApplication.shared.canOpenURL(url)
+        if can {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:]) { (b) in
+                    print("打开结果: \(b)")
+                }
+            } else {
+                //iOS 10 以前
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
     //App Store 评价
     func openStore(currentVc: UIViewController, appId: String)  {
         parentVc = currentVc

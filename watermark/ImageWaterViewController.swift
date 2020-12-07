@@ -89,6 +89,8 @@ class ImageWaterViewController: UIViewController, UINavigationControllerDelegate
             UIAlertController.showAlert(message: "请先选择图片", in: self)
             return
         }
+        UIImageWriteToSavedPhotosAlbum(imageView.image!, nil, nil, nil)
+        UIAlertController.showAlert(message: "保存成功", in: self)
     }
     
     

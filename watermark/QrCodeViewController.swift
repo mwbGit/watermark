@@ -55,7 +55,7 @@ class QrCodeViewController: UIViewController,UITextFieldDelegate {
         
         let imageFile = self.image.image!
         UIImageWriteToSavedPhotosAlbum(imageFile, nil, nil, nil)
-        UIAlertController.showAlert(message: "成功")
+        UIAlertController.showAlert(message: "保存成功")
     }
     
     @IBAction func input(_ sender: Any) {

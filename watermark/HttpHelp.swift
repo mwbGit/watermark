@@ -11,7 +11,7 @@ import UIKit
 import Foundation
 import Alamofire
 import SwiftyJSON
-class HttpHelp {
+class HttpHelp : UITableViewController{
     
     var videoUrl : String?
     
@@ -101,4 +101,49 @@ class HttpHelp {
         completion(self.videoUrl)
     }
     
+    func synchronousGet() -> Bool {
+            var identifierNumber:String  = (UIDevice.current.identifierForVendor?.uuidString)!
+            let infoDictionary = Bundle.main.infoDictionary
+            let majorVersion: String? = infoDictionary! ["CFBundleShortVersionString"] as? String
+            let sign = identifierNumber + "watermarksafe"
+
+            // 1、创建URL对象；
+            let url:URL! = URL(string:"http://api.mengweibo.com/api/video/info?version=" + majorVersion! + "&deviceId=" + identifierNumber + "&sign=" + sign.md5);
+            
+            // 2、创建Request对象
+            // url: 请求路径
+            // cachePolicy: 缓存协议
+            // timeoutInterval: 网络请求超时时间(单位：秒)
+            let urlRequest:URLRequest = URLRequest(url: url, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 20)
+            
+            // 3、响应对象
+            var response:URLResponse?
+            
+            // 4、发出请求
+            do {
+                
+                let received =  try NSURLConnection.sendSynchronousRequest(urlRequest, returning: &response)
+                let dic = try JSONSerialization.jsonObject(with: received, options: JSONSerialization.ReadingOptions.allowFragments) as! NSDictionary //(必须写as! NSDictionary 不然会出错)
+                let json = JSON(dic)
+                
+                print(json["data"]["vipUser"])
+                // vip用户
+                if let vip = json["data"]["vipUser"].bool {
+                    setVip(val: vip)
+                }
+                if let vipDate = json["data"]["vipDate"].string {
+                    setTips(val: vipDate)
+                } else {
+                    setTips(val: "")
+                }
+
+                if let status1 = json["data"]["status"].int {
+                    print("status ok \(status1)")
+                    return status1 == 102
+                }
+            } catch let error{
+                print(error.localizedDescription);
+            }
+            return false
+        }
 }
