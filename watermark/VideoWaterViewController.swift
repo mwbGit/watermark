@@ -11,153 +11,95 @@ import MobileCoreServices
 import AssetsLibrary
 import AVKit
 import AVFoundation
+import NSGIF
+import LLVideoEditor
+import CLImagePickerTool
 
-class VideoWaterViewController: UIViewController ,  UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class VideoWaterViewController: UIViewController{
     
+    var containerView: UIView!
+
     override func viewDidLoad() {
         title = "视频加水印"
         super.viewDidLoad()
         
         //创建一个ContactAdd类型的按钮
-        
         let button:UIButton = UIButton(type:.system)
-        
         button.frame = CGRect(x:10, y:150, width:100, height:30)
-        
         button.setTitle("选择视频", for:.normal)
-        
         button.addTarget(self, action:#selector(selectVideo), for:.touchUpInside)
-        
         self.view.addSubview(button)
         
         containerView = UIView(frame: CGRect(x: 5, y: 160, width: SCREEN_WIDTH - 10 , height: SCREEN_HEIGHT - 200))
         containerView.contentMode = UIView.ContentMode.scaleAspectFit
         self.view.addSubview(containerView)
+        
+        let url = "http://v26-dy.ixigua.com/1706bd9da7b0c217b9cd17c210c8b260/5fbb694f/video/tos/cn/tos-cn-ve-15/cfec3abb65784ef3bb5ef13d1f440668/?a=1128&br=4893&bt=1631&cr=0&cs=0&cv=1&dr=0&ds=3&er=&l=202011231448170101980662183417904E&lr=&mime_type=video_mp4&qs=0&rc=Mzd2PGh3NnA7eDMzZ2kzM0ApNmk4PDk1ZTw6Nzs1Zzc3aWc0b2JiaV5lNnBfLS0xLS9zczE0MS8xNC0xX2BfNF4xXl86Yw%3D%3D&vl=&vr="
+        let url2:URL! = URL(string:url);
+        
+        
+//        NSGIF.optimalGIFfromURL(url2 , loopCount: 0) { (gifUrl) in
+//            print("Any", gifUrl?.absoluteString)
+//            let data = NSData(contentsOf: gifUrl!)
+//
+//            UIImageWriteToSavedPhotosAlbum(UIImage.init(data: data as! Data)!, nil, nil, nil)
+//            UIAlertController.showAlert(message: "ok!")
+//        }
+        
+        print("start------")
+        selectVideo()
+//        videoAddWatermarkVideoUrl(videoUrl: url)
+        print("ok------")
     }
     
-    
+    @objc func selectVideo1() {
+        
+    }
     
     //选择视频
-    
     @objc func selectVideo() {
-        
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+        let imagePickTool = CLImagePickerTool()
+        imagePickTool.isHiddenImage = true
+        // 选择照片
+        imagePickTool.setupImagePickerWith(MaxImagesCount: 1, superVC: self) {
+            (asset,cutImage) in
             
-            //初始化图片控制器
+            let aa = asset[0]
             
-            let imagePicker = UIImagePickerController()
-            
-            //设置代理
-            
-            imagePicker.delegate = self
-            
-            //指定图片控制器类型
-            
-            imagePicker.sourceType = .photoLibrary
-            
-            //只显示视频类型的文件
-            
-            imagePicker.mediaTypes = [kUTTypeMovie as String]
-            
-            //不需要编辑
-            
-            imagePicker.allowsEditing = false
-            
-            //弹出控制器，显示界面
-            
-            self.present(imagePicker, animated: true, completion: nil)
-            
+            CLImagePickerTool.convertAssetToAvPlayerItem(asset: asset[0], successClouse: { (playerItem) in
+                DispatchQueue.main.async(execute: {
+                        // 执行你的操作
+                    let urlAsset:AVURLAsset = playerItem.asset as! AVURLAsset;
+                    let composition = MwbMediaComposition()
+                    //有动画
+                    composition.imagesVideoAnimation(with: urlAsset, progress: { (progress) in
+                        print("合成进度",progress)
+                    }, success: {[weak self] (path) in
+                        guard let `self` = self else {return}
+                        print("合成后地址",path)
+                    }) { (errMessage) in
+                        print("合成失败",errMessage ?? "")
+                        UIAlertController.showAlert(message:"合成失败")
+                    }
+                })
+            }, failedClouse: {
+                
+            }) { (progress) in
+                print("视频下载进度\(progress)")
+            }
         }
-            
-        else {
-            
-            print("读取相册错误")
-            
+    }
+   
+    func setupPath() -> String{
+        var path = NSTemporaryDirectory() + UUID().uuidString + ".mov"
+        if FileManager.default.fileExists(atPath: path) {
+            try? FileManager.default.removeItem(atPath: path)
         }
-        
+        return path
     }
     
-    
-    
-    //选择视频成功后代理
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        //获取视频路径（选择后视频会自动复制到app临时文件夹下）
-        let videoURL = info[UIImagePickerController.InfoKey.mediaURL] as! URL
-        //        let image = info[.originalImage] as! UIImage
-        
-        let pathString = videoURL.relativePath
-        
-        print("视频地址：\(pathString)")
-        
-        //图片控制器退出
-        self.dismiss(animated: true, completion: {})
-        
-        //播放视频文件
-        
-//        reviewVideo(videoURL)
-        
-        let wavideo = WAVideoBox()
-        let img = UIImage.init(named: "vip")
-        
-        wavideo.appendVideo(byPath: pathString)
-        wavideo.appendWaterMark(img, absoluteRect: CGRect.init(x: 100, y: 300, width: 100, height: 100))
-        let videoPath = getTempPath()
-        wavideo.asyncFinishEdit(byFilePath: videoPath) { (NSError) in
-            print("============")
-//            DispatchQueue.main.async {
-                let player = AVPlayer.init(url: URL.init(fileURLWithPath: videoPath))
-                self.playerViewController = AVPlayerViewController()
-                self.playerViewController!.player = player
-                self.containerView?.addSubview(self.playerViewController!.view)
-                self.playerViewController?.view.frame = self.containerView!.bounds
-                self.addChild(self.playerViewController!)
-                print("+++++++++++++++++")
-//            }
-        }
 
-    }
-    
-    var containerView: UIView!
-    var playerViewController:AVPlayerViewController?
-    
-    func getTempPath () -> String {
-        return NSTemporaryDirectory() + "/temp.mov"
-    }
-    func jKRemovefile(folderName: NSString){
-      let fileManager: FileManager = FileManager.default
-      let filePath = "\(folderName)"
-      //移除文件
-      try! fileManager.removeItem(atPath: filePath)
-    }
-    
-    //视频播放
-    
-    func reviewVideo(_ videoURL: URL) {
-        
-        //定义一个视频播放器，通过本地文件路径初始化
-        
-        let player = AVPlayer(url: videoURL)
-        
-        let playerViewController = AVPlayerViewController()
-        
-        playerViewController.player = player
-        
-        self.present(playerViewController, animated: true) {
-            
-            playerViewController.player!.play()
-            
-        }
-        
-    }
     
     
-    
-    override func didReceiveMemoryWarning() {
-        
-        super.didReceiveMemoryWarning()
-        
-    }
     
 }

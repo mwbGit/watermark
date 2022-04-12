@@ -11,7 +11,7 @@ import UIKit
 class MenuTableViewController: UITableViewController {
     var open = false
     var status = 0
-    var date = 2020120807
+    var date = 2021010907
     var observer : StoreObserver? //内购监听器
     var productIdArray = [String]() //存放内购产品
     
@@ -24,7 +24,6 @@ class MenuTableViewController: UITableViewController {
             overrideUserInterfaceStyle = .light
         }
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
-        let identifierNumber:String  = (UIDevice.current.identifierForVendor?.uuidString)!
         
         self.observer = StoreObserver.shareStoreObserver()
         
@@ -32,8 +31,6 @@ class MenuTableViewController: UITableViewController {
         self.productIdArray = ["105", "106"]
         //获取所有的商品
         self.observer?.requestProductDataWithIds(productIds: self.productIdArray)
-//        checkNet()
-
     }
     
     // MARK: - Table view data source

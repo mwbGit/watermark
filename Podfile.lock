@@ -2,8 +2,11 @@ PODS:
   - Alamofire (4.8.2)
   - Bugly (2.5.71)
   - CLImagePickerTool (3.1.3)
+  - KeychainSwift (12.0.0)
+  - LLVideoEditor (1.0.0)
   - MediaComposition (1.0.1)
   - MOBFoundation (3.2.19)
+  - NSGIF (1.2.4)
   - SnapKit (4.2.0)
   - SwiftyJSON (4.3.0)
   - WAVideoBox (0.1.5)
@@ -12,8 +15,11 @@ DEPENDENCIES:
   - Alamofire (~> 4.8.2)
   - Bugly
   - CLImagePickerTool
+  - KeychainSwift (= 12.0.0)
+  - LLVideoEditor (~> 1.0)
   - MediaComposition
   - MOBFoundation
+  - NSGIF (~> 1.0)
   - SnapKit (~> 4.2.0)
   - SwiftyJSON (~> 4.0)
   - WAVideoBox
@@ -23,8 +29,11 @@ SPEC REPOS:
     - Alamofire
     - Bugly
     - CLImagePickerTool
+    - KeychainSwift
+    - LLVideoEditor
     - MediaComposition
     - MOBFoundation
+    - NSGIF
     - SnapKit
     - SwiftyJSON
     - WAVideoBox
@@ -33,12 +42,15 @@ SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Bugly: fd066c75c4a0eca1440f9b6a84bd37d51bfc85ac
   CLImagePickerTool: 2ef59c6524efd493571a0ee2bc42f445b4c5b2cb
+  KeychainSwift: d5e776578587ee5958ce36601df22f168f65138a
+  LLVideoEditor: f287ea4a532dade2b40ba042c80bf76a546325e5
   MediaComposition: cd6ef604dd9b56a605339c48a639fdeab6055708
   MOBFoundation: 606bc4c10ff4c6ac573c09f5081a39c75316bc7b
+  NSGIF: 442808fd1667ebac3d09046c3f6d4bdd6720cded
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   WAVideoBox: 7dc5ae1938b4e6bcb0944613a2fbe72205ebc3ca
 
-PODFILE CHECKSUM: 3183c886cd38a15ac386a0f02ab65e9567d85012
+PODFILE CHECKSUM: 10ef3cdad3a9c9daee44f69b9795bb2ec8250c35
 
 COCOAPODS: 1.9.3

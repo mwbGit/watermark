@@ -43,9 +43,8 @@ public extension UIViewController {
     func setVip(val:Bool) {
         UserDefaults.standard.set(val, forKey: "vip")
     }
-    
     var limit: Bool {
-        return UserDefaults.standard.integer(forKey: "times") >= 3
+        return UserDefaults.standard.integer(forKey: "times") >= 1
     }
     
     var increase: Bool {

@@ -1,4 +1,4 @@
-# Uncomment the next line to define a global platform for your project
+ # Uncomment the next line to define a global platform for your project
 # platform :ios, '10.0'
 
 target 'watermark' do
@@ -23,4 +23,7 @@ target 'watermark' do
   pod 'CLImagePickerTool'
   pod 'Bugly'
   pod 'WAVideoBox' 
+  pod 'LLVideoEditor', '~> 1.0'
+  pod "NSGIF" , "~> 1.0"
+  pod 'KeychainSwift', '12.0.0'
 end

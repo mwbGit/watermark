@@ -12,6 +12,8 @@
 		72678673A5D78C8CFD8D3FA7 /* Pods_watermarkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24A9B375EEF2CF86717FF870 /* Pods_watermarkTests.framework */; };
 		842D8C872567C74C0088F4B2 /* StoreObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842D8C862567C74C0088F4B2 /* StoreObserver.swift */; };
 		8437FED32578876F00CCEAF6 /* VideoWaterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437FED22578876F00CCEAF6 /* VideoWaterViewController.swift */; };
+		8437FED5257F67F300CCEAF6 /* MediaComposition_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437FED4257F67F300CCEAF6 /* MediaComposition_Extension.swift */; };
+		8437FED7257F6FB700CCEAF6 /* MwbMediaComposition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437FED6257F6FB700CCEAF6 /* MwbMediaComposition.swift */; };
 		844124E72535A55500C4B79F /* QrCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844124E62535A55500C4B79F /* QrCodeViewController.swift */; };
 		8464F564251465150058A2AD /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464F563251465150058A2AD /* MenuTableViewController.swift */; };
 		847A85052518C6690052461F /* LGStoreProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847A85042518C6690052461F /* LGStoreProduct.swift */; };
@@ -65,6 +67,8 @@
 		7ACD0E928FB19AD5FC77E86A /* Pods_watermark.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_watermark.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		842D8C862567C74C0088F4B2 /* StoreObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreObserver.swift; sourceTree = "<group>"; };
 		8437FED22578876F00CCEAF6 /* VideoWaterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWaterViewController.swift; sourceTree = "<group>"; };
+		8437FED4257F67F300CCEAF6 /* MediaComposition_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaComposition_Extension.swift; sourceTree = "<group>"; };
+		8437FED6257F6FB700CCEAF6 /* MwbMediaComposition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MwbMediaComposition.swift; sourceTree = "<group>"; };
 		844124E62535A55500C4B79F /* QrCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeViewController.swift; sourceTree = "<group>"; };
 		8464F563251465150058A2AD /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		847A85042518C6690052461F /* LGStoreProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LGStoreProduct.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				847A850E25199BAB0052461F /* UIDevice_Extension.swift */,
 				84B241CD2539AF8C0088D113 /* String_Extension.swift */,
 				84C61B13256CB7EA00340C4B /* UIAlertController.swift */,
+				8437FED4257F67F300CCEAF6 /* MediaComposition_Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -183,6 +188,7 @@
 				84B241D6253DD10B0088D113 /* RImageCropperViewController.swift */,
 				84B241D7253DD10B0088D113 /* RDevice.swift */,
 				84C61B1B256F75FB00340C4B /* DropBoxTextField.swift */,
+				8437FED6257F6FB700CCEAF6 /* MwbMediaComposition.swift */,
 			);
 			path = ImageCropper;
 			sourceTree = "<group>";
@@ -553,12 +559,14 @@
 				844124E72535A55500C4B79F /* QrCodeViewController.swift in Sources */,
 				84C61B1E2570C73800340C4B /* VipViewController.swift in Sources */,
 				84C61B1C256F75FB00340C4B /* DropBoxTextField.swift in Sources */,
+				8437FED5257F67F300CCEAF6 /* MediaComposition_Extension.swift in Sources */,
 				842D8C872567C74C0088F4B2 /* StoreObserver.swift in Sources */,
 				847A85052518C6690052461F /* LGStoreProduct.swift in Sources */,
 				84B241D8253DD10C0088D113 /* RImageCropperViewController.swift in Sources */,
 				847A851025199BAB0052461F /* UIDevice_Extension.swift in Sources */,
 				84B241E1253E7E2A0088D113 /* ImageVideoViewController.swift in Sources */,
 				84C61B14256CB7EA00340C4B /* UIAlertController.swift in Sources */,
+				8437FED7257F6FB700CCEAF6 /* MwbMediaComposition.swift in Sources */,
 				84CA9C1825130440006C2C34 /* AppDelegate.swift in Sources */,
 				8464F564251465150058A2AD /* MenuTableViewController.swift in Sources */,
 				84B241CE2539AF8C0088D113 /* String_Extension.swift in Sources */,
@@ -672,7 +680,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -726,7 +734,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -742,7 +750,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 88QL6WNJZ4;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = watermark/Info.plist;
@@ -751,7 +759,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mwb.watermark;
 				PRODUCT_NAME = "水印助手";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyShare-Bridging-Header.h";
@@ -767,7 +775,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 88QL6WNJZ4;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = watermark/Info.plist;
@@ -776,7 +784,7 @@
 					"@executable_path/Frameworks",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mwb.watermark;
 				PRODUCT_NAME = "水印助手";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyShare-Bridging-Header.h";

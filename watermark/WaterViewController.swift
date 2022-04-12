@@ -14,6 +14,7 @@ import SwiftyJSON
 import MediaPlayer
 import WebKit
 import StoreKit
+import CLImagePickerTool
 
 class WaterViewController: UIViewController,UITextFieldDelegate {
         
@@ -79,14 +80,22 @@ class WaterViewController: UIViewController,UITextFieldDelegate {
         self.view.addSubview(save)
         
         // lodding
-        spinner = UIActivityIndicatorView (style: UIActivityIndicatorView.Style.large)
-        spinner.center = CGPoint(x: SCREEN_WIDTH / 2, y: SCREEN_HEIGHT / 2 - 170);
-        spinner.color = UIColor.blue;
+        spinner = UIActivityIndicatorView.init(style: .whiteLarge)
+        spinner.frame = CGRect(x: 100, y: 100, width: 100, height: 100)
+        spinner.center = (UIApplication.shared.keyWindow?.center)!
+        spinner.color = UIColor.black
         self.view.addSubview(spinner)
         //剪切板
         paste()
         
         self.observer = StoreObserver.shareStoreObserver()
+        self.observer?.create()
+    }
+    
+    //销毁
+    deinit {
+        self.observer?.destroy()
+        print("销毁了1")
     }
     
     //点击空白处关闭键盘
@@ -127,17 +136,17 @@ class WaterViewController: UIViewController,UITextFieldDelegate {
             return true
         }
         
-        let optionMenu = UIAlertController(title: "获取Pro", message: "一次性解锁全部功能，新用户专享3天免费试用，可以随时取消订阅", preferredStyle: .alert)
+        let optionMenu = UIAlertController(title: "获取Pro", message: "一次性解锁全部功能，新用户专享3天免费试用，可以随时取消", preferredStyle: .alert)
         // 2
-        let actionOK = UIAlertAction(title: "免费试用", style: .default) { action -> Void in
+        let actionOK = UIAlertAction(title: "免费使用", style: .default) { action -> Void in
             print("actionOK")
             // 购买
             self.observer?.buyProduct(index: 0)
         }
-        let cancelAction = UIAlertAction(title: "了解更多", style: .cancel) { action -> Void in
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel) { action -> Void in
             print("Cancel")
-            let store = LGStoreProduct()
-            store.openStore(currentVc: self, appId: "1519568576")
+//            let store = LGStoreProduct()
+//            store.openStore(currentVc: self, appId: "1519568576")
         }
         
         optionMenu.addAction(actionOK)
@@ -187,7 +196,6 @@ class WaterViewController: UIViewController,UITextFieldDelegate {
             return
         }
         parse()
-        spinner.stopAnimating()
     }
     
     
@@ -221,11 +229,12 @@ class WaterViewController: UIViewController,UITextFieldDelegate {
             UIAlertController.showAlert(message:"请等待，正在处理中")
             return
         }
+
         do {
             // 解析
             spinner.startAnimating()
             let sign = url + "watermarksafe"
-            let identifierNumber:String  = (UIDevice.current.identifierForVendor?.uuidString)!
+            let identifierNumber = UIDevice.getUid
             let infoDictionary = Bundle.main.infoDictionary
             let majorVersion: String? = infoDictionary! ["CFBundleShortVersionString"] as? String
 
@@ -253,6 +262,7 @@ class WaterViewController: UIViewController,UITextFieldDelegate {
                                                 print(response.result.error)
                                                 break
                                             }
+                                            self.spinner.stopAnimating()
             }
             
         } catch {
@@ -266,7 +276,7 @@ class WaterViewController: UIViewController,UITextFieldDelegate {
     var cancelledData : Data?//用于停止下载时,保存已下载的部分
     var downloadRequest:DownloadRequest!//下载请求对象
     var destination:DownloadRequest.DownloadFileDestination!//下载文件的保存路径
-    
+
     func loadData(videoUrl: String) {
         //下载的进度条显示
         Alamofire.download(videoUrl).downloadProgress(queue: DispatchQueue.main) { (progress) in
@@ -278,9 +288,12 @@ class WaterViewController: UIViewController,UITextFieldDelegate {
             let documentsUrl = FileManager.default.urls(for: .documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask).first
             let fileUrl = documentsUrl?.appendingPathComponent(response.suggestedFilename!)
             print(fileUrl)
+
             return (fileUrl!,[.removePreviousFile, .createIntermediateDirectories] )
         }
-        
+        print("--------------")
+        print(self.destination.debugDescription)
+        print("--------------")
         self.downloadRequest = Alamofire.download(videoUrl, to: self.destination)
         
         self.downloadRequest.responseData(completionHandler: downloadResponse)

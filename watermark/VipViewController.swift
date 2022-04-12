@@ -11,6 +11,7 @@ import StoreKit
 import WebKit
 import Alamofire
 import SwiftyJSON
+import CLImagePickerTool
 
 class VipViewController: UIViewController {
     
@@ -97,7 +98,6 @@ class VipViewController: UIViewController {
             goBut.setTitle("您已是超级会员", for: .normal)
             return
         }
-        
     }
     
     var productButArray = [UIButton(), UIButton()]
@@ -159,6 +159,7 @@ class VipViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
         self.observer?.destroy()
         print("销毁了")
+        PopViewUtil.share.stopLoading()
     }
     
     
@@ -182,6 +183,7 @@ class VipViewController: UIViewController {
             UIAlertController.showAlert(message: "您已经是超级会员")
             return
         }
+        PopViewUtil.share.showLoading();
         self.observer?.buyProduct(index: idx)
     }
 
@@ -192,6 +194,7 @@ class VipViewController: UIViewController {
         setVip(val: true)
         report()
         UIAlertController.showTitleAlert(title:"成功", message: "1分钟内生效",in: self)
+        PopViewUtil.share.stopLoading()
     }
     
     //实现通知监听方法---- 重新购买
@@ -200,6 +203,7 @@ class VipViewController: UIViewController {
         setVip(val: true)
         report()
         UIAlertController.showTitleAlert(title:"成功", message: "1分钟内生效",in: self)
+        PopViewUtil.share.stopLoading()
     }
     
     //实现通知监听方法---- 失败
@@ -208,6 +212,7 @@ class VipViewController: UIViewController {
         print("购买失败。。。。")
         report()
         UIAlertController.showTitleAlert(title:"订阅失败", message: code,in: self)
+        PopViewUtil.share.stopLoading()
     }
     
     func report() {
@@ -221,7 +226,7 @@ class VipViewController: UIViewController {
             let infoDictionary = Bundle.main.infoDictionary
             let majorVersion: String? = infoDictionary! ["CFBundleShortVersionString"] as? String
 
-            let identifierNumber:String  = (UIDevice.current.identifierForVendor?.uuidString)!
+            let identifierNumber = UIDevice.getUid
             let sign = identifierNumber + "watermarksafe"
             let encodeStr1: String = encodeStr ?? ""
             Alamofire.request("http://api.mengweibo.com/api/video/report?version=" + majorVersion!, method: HTTPMethod.post,

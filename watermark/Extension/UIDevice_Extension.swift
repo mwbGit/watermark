@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import KeychainSwift
 
 public extension UIDevice {
     // 判断是否为iPhontX系列手机
@@ -19,4 +20,18 @@ public extension UIDevice {
         return false
     }
     
+    static var getUid :String {
+        let keychain = KeychainSwift()
+        var cuserId: String!
+        
+        if let userID = keychain.get("cuserId") {
+            cuserId = userID
+        } else {
+            let uuid = UUID().uuidString
+            keychain.set(uuid, forKey: "cuserId")
+            cuserId = keychain.get("cuserId") ?? (UIDevice.current.identifierForVendor?.uuidString)!
+        }
+        print("c_uuid= "+cuserId)
+        return cuserId
+    }
 }

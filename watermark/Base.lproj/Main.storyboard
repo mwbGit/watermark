@@ -10,7 +10,7 @@
         <!--菜单-->
         <scene sceneID="777-N0-FkI">
             <objects>
-                <tableViewController id="OlW-Z0-SYJ" userLabel="菜单" customClass="MenuTableViewController" customModule="watermark" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="OlW-Z0-SYJ" userLabel="菜单" customClass="MenuTableViewController" customModule="水印助手" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="yt1-fG-3pR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="短视频提取" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fiV-vj-5F4">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="短视频去水印" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fiV-vj-5F4">
                                                     <rect key="frame" x="59" y="0.0" width="276" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -319,7 +319,7 @@
         <!--用户协议-->
         <scene sceneID="lV9-SV-NAP">
             <objects>
-                <viewController id="O9s-Na-bnO" userLabel="用户协议" customClass="AgreementViewController" customModule="watermark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="O9s-Na-bnO" userLabel="用户协议" customClass="AgreementViewController" customModule="水印助手" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xbE-3q-zrJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -330,12 +330,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AxN-F9-Q2A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3055.072463768116" y="671.65178571428567"/>
+            <point key="canvasLocation" x="2739" y="1051"/>
         </scene>
         <!--隐私协议-->
         <scene sceneID="lgb-NM-GjA">
             <objects>
-                <viewController id="HAk-dv-lEk" userLabel="隐私协议" customClass="PrivacyViewController" customModule="watermark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HAk-dv-lEk" userLabel="隐私协议" customClass="PrivacyViewController" customModule="水印助手" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CDy-Ev-vPd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -351,7 +351,7 @@
         <!--二微码-->
         <scene sceneID="tcH-it-f5Q">
             <objects>
-                <viewController id="L6k-aw-vfI" userLabel="二微码" customClass="QrCodeViewController" customModule="watermark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="L6k-aw-vfI" userLabel="二微码" customClass="QrCodeViewController" customModule="水印助手" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="atK-YD-Kxg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -402,7 +402,7 @@
         <!--去水印-->
         <scene sceneID="0y5-94-Z9b">
             <objects>
-                <viewController id="zm9-tU-Wrn" userLabel="去水印" customClass="WaterViewController" customModule="watermark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zm9-tU-Wrn" userLabel="去水印" customClass="WaterViewController" customModule="水印助手" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FRf-d1-Qx8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -437,7 +437,7 @@
         <!--9宫格-->
         <scene sceneID="E38-Mn-McW">
             <objects>
-                <viewController id="yyW-Mg-yck" userLabel="9宫格" customClass="ImageCutViewController" customModule="watermark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yyW-Mg-yck" userLabel="9宫格" customClass="ImageCutViewController" customModule="水印助手" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="csy-wn-IJp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -453,7 +453,7 @@
         <!--合成视频-->
         <scene sceneID="HSQ-j7-1pu">
             <objects>
-                <viewController id="cWv-m4-PG4" userLabel="合成视频" customClass="ImageVideoViewController" customModule="watermark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cWv-m4-PG4" userLabel="合成视频" customClass="ImageVideoViewController" customModule="水印助手" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Ab-nG-X4q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -469,7 +469,7 @@
         <!--图片加水印-->
         <scene sceneID="279-Ud-yai">
             <objects>
-                <viewController id="GFh-Hg-j8w" userLabel="图片加水印" customClass="ImageWaterViewController" customModule="watermark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GFh-Hg-j8w" userLabel="图片加水印" customClass="ImageWaterViewController" customModule="水印助手" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Or-bt-epX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -485,7 +485,7 @@
         <!--超级会员-->
         <scene sceneID="2Ga-MB-ufj">
             <objects>
-                <viewController id="Smo-ta-t6m" userLabel="超级会员" customClass="VipViewController" customModule="watermark" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Smo-ta-t6m" userLabel="超级会员" customClass="VipViewController" customModule="水印助手" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZMs-ij-YNd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
